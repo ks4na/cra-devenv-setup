@@ -6,6 +6,8 @@
   - [创建路由配置文件 `src/router.tsx`](#创建路由配置文件-srcroutertsx)
   - [在 src/index.tsx 中引入路由配置](#在-srcindextsx-中引入路由配置)
   - [更改根组件 src/App.tsx 的代码查看效果](#更改根组件-srcapptsx-的代码查看效果)
+- [3.css 样式重置（normalize）](#3css-样式重置normalize)
+- [4.sass 样式文件支持](#4sass-样式文件支持)
 
 ## 1.typescript 别名支持
 
@@ -104,3 +106,18 @@ function App() {
 
 export default App
 ```
+
+## 3.css 样式重置（normalize）
+
+根据 CRA 官网文档，直接在 `index.css` 最上方加入以下代码即可：
+
+```css
+/* css 样式重置 */
+@import-normalize;
+```
+
+## 4.sass 样式文件支持
+
+根据 CRA 官网文档，使用 `npm i sass` 安装依赖后，将 `css` 文件后缀名改为 `scss` 即可。
+
+如果想要使用 `module` 化的 `scss` 文件，即想要使用 `import styles from 'xxx.scss'` 的方式来引入样式，需要使用 `.module.scss` 后缀名。
