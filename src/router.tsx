@@ -3,6 +3,7 @@ import App from 'src/App'
 import IndexPage from 'src/pages/IndexPage'
 import DogsPage from 'src/pages/Dogs'
 import CatsPage from 'src/pages/Cats'
+import NotFound from 'src/pages/NotFound'
 
 export const router = createBrowserRouter(
   [
@@ -28,7 +29,7 @@ export const router = createBrowserRouter(
     // 404 组件
     {
       path: '*',
-      element: <h2>Page Not Found</h2>,
+      element: <NotFound />,
     },
   ],
   {

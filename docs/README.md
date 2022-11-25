@@ -12,6 +12,10 @@
   - [html 中引用 public 目录下的资源](#html-中引用-public-目录下的资源)
   - [css 等样式文件中引用 public 目录下的资源](#css-等样式文件中引用-public-目录下的资源)
   - [js 代码中引用 public 目录下的资源](#js-代码中引用-public-目录下的资源)
+- [6.更改页面 head 中的标签值](#6更改页面-head-中的标签值)
+  - [安装](#安装)
+  - [配置 HelmetProvider](#配置-helmetprovider)
+  - [在页面中修改 head 中标签的信息](#在页面中修改-head-中标签的信息)
 
 ## 1.typescript 别名支持
 
@@ -170,4 +174,61 @@ render() {
 
 ```tsx
 <BrowserRouter basename={process.env.PUBLIC_URL} />
+```
+
+## 6.更改页面 head 中的标签值
+
+修改 `title` 、`favicon` 等信息时，需要对页面 `<head>` 中的元素进行修改，可以使用 `react-helmet-async` 库来实现。
+
+### 安装
+
+```sh
+npm i react-helmet-async
+```
+
+### 配置 HelmetProvider
+
+修改 `src/index.tsx`，使用 `HelmetProvider` 组件包裹根组件：
+
+```tsx
+// ......
+import { HelmetProvider } from 'react-helmet-async'
+
+// ......
+
+root.render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+  </React.StrictMode>
+)
+```
+
+### 在页面中修改 head 中标签的信息
+
+下面的例子修改了 `<head>` 中的 `<title> ` 和 `link:favicon` 的值：
+
+```tsx
+render() {
+  return (
+    <>
+      <Helmet>
+        <title>cra devenv setup</title>
+        <link
+          rel="shortcut icon"
+          href={`${publicUrl}/favicon-dark.png`}
+          type="image/x-icon"
+        />
+      </Helmet>
+      {/* ...... */}
+    </>
+  )
+}
+```
+
+注意： 由于 `public/index.html` 中已经指定了 `favicon`，需要给该标签加上 `data-rh="true"`，否则更新 `link:favicon` 标签的值将没有效果。
+
+```html
+<link rel="icon" href="%PUBLIC_URL%/favicon.ico" data-rh="true" />
 ```
