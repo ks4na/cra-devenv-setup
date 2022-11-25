@@ -5,3 +5,15 @@ $themeColor: skyblue;
   font-size: 20px;
   color: $themeColor;
 }
+
+.imgLogo {
+  max-width: 200px;
+}
+
+.bgLogo {
+  width: 200px;
+  height: 200px;
+  background-image: url(../../../public/logo512.png);
+  background-size: 100%;
+  background-position: center;
+}
