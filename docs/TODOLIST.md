@@ -1,6 +1,9 @@
 # TODOLIST
 
 - [ ] 添加 RTK 示例
+- [ ] linter
+  - [ ] eslint,prettier,stylelint,husky,lint-staged
+  - [ ] commitlint,commitizen...
 - [ ] 添加 test 示例
   - [ ] 单元测试
   - [ ] E2E 测试
