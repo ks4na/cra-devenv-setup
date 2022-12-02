@@ -1,5 +1,15 @@
 # TODOLIST
 
+- [x] 配置路径别名
+  - 见分支 `feat-path_alias-路径别名`
+- [x] 配置 react-router-dom Ver 6
+  - 见分支 `f-add_reactrouterdom-添加reactrouterdom`
+- [x] css normalize 和配置 sass
+  - 见分支 `f-add_stylesheets_config-添加样式表相关配置`
+- [x] 引用 public 目录的资源
+  - 见分支 `f-refer_public_dir_assets-引用public目录的资源`
+- [x] react-helmet-async
+  - 见分支 `f-add_reacthelmetasync-添加reacthelmetasync`
 - [ ] 添加 RTK 示例
 - [ ] 添加 test 示例
   - [ ] 单元测试
@@ -11,5 +21,7 @@
   - [ ] linter
     - [ ] eslint,prettier,stylelint,husky,lint-staged
     - [ ] commitlint,commitizen...
-  - [ ] 添加 corepack 管理包管理器
-  - [ ] 添加 .gitattributes
+  - [x] 添加 corepack 管理包管理器
+    - 见分支 `f-enable_corepack-启用corepack`
+  - [x] 添加 .gitattributes
+    - 见分支 `f-add_gitattributes-添加gitattributes`
