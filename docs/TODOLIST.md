@@ -19,9 +19,13 @@
 - [ ] 添加 PWA 示例
 - [ ] 团队合作相关的项目配置
   - [ ] linter
-    - [ ] eslint,prettier,stylelint,husky,lint-staged
-    - [ ] commitlint,commitizen...
+    - [x] eslint,prettier,stylelint
+    - [ ] commitlint,commitizen
+    - [ ] husky,lint-staged
   - [x] 添加 corepack 管理包管理器
     - 见分支 `f-enable_corepack-启用corepack`
   - [x] 添加 .gitattributes
     - 见分支 `f-add_gitattributes-添加gitattributes`
+  - [ ] devcontainer 配置
+- [ ] 版本发布
+  - [ ] standard-version / semantic-release
