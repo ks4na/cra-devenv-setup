@@ -16,6 +16,8 @@
   - [安装](#安装)
   - [配置 HelmetProvider](#配置-helmetprovider)
   - [在页面中修改 head 中标签的信息](#在页面中修改-head-中标签的信息)
+- [7.添加.gitattributes](#7添加gitattributes)
+- [8.启用 corepack 管理包管理器](#8启用-corepack-管理包管理器)
 
 ## 1.typescript 别名支持
 
@@ -232,3 +234,11 @@ render() {
 ```html
 <link rel="icon" href="%PUBLIC_URL%/favicon.ico" data-rh="true" />
 ```
+
+## 7.添加.gitattributes
+
+见笔记 [.gitattributes 介绍](https://gitbook.yumecoder.top/above-coding/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3/git%E9%AB%98%E7%BA%A7/gitattributes%E4%BB%8B%E7%BB%8D.html)
+
+## 8.启用 corepack 管理包管理器
+
+见笔记 [corepack 管理包管理器](https://gitbook.yumecoder.top/above-coding/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3/corepack%E7%AE%A1%E7%90%86%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html)
