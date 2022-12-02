@@ -21,6 +21,7 @@
 - [9.配置 linters](#9配置-linters)
   - [配置 eslint](#配置-eslint)
   - [配置 stylelint](#配置-stylelint)
+  - [配置 prettier](#配置-prettier)
 
 ## 1.typescript 别名支持
 
@@ -333,3 +334,21 @@ module.exports = {
 > 使用 SCSS 时，需要将上面的标准配置 `stylelint-config-standard` 替换成 `stylelint-config-standard-scss` ，然后将 `stylelint-config-prettier` 替换成 `stylelint-config-prettier-scss`。
 
 > vscode 的 `stylelint` 插件默认不对 scss 文件做检查，需要在配置中 `stylelint.validate` 中加上 `scss`。
+
+### 配置 prettier
+
+首先安装 `prettier`：
+
+```sh
+npm install --save-dev --save-exact prettier
+```
+
+然后创建配置文件 `.prettierrc.js`：
+
+```js
+module.exports = {
+  endOfLine: 'lf', // v1.15.0 后可用，v2.0.0 后由 auto 改为 lf
+  semi: false, // 默认为 true
+  singleQuote: true, // 默认为 false
+}
+```
