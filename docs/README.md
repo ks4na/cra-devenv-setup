@@ -20,6 +20,7 @@
 - [8.启用 corepack 管理包管理器](#8启用-corepack-管理包管理器)
 - [9.配置 linters](#9配置-linters)
   - [配置 eslint](#配置-eslint)
+  - [配置 stylelint](#配置-stylelint)
 
 ## 1.typescript 别名支持
 
@@ -300,3 +301,35 @@ module.exports = {
   // ...
 }
 ```
+
+### 配置 stylelint
+
+首先安装 `stylelint`，并安装标准配置 `stylelint-config-standard`：
+
+```sh
+npm install --save-dev stylelint stylelint-config-standard
+```
+
+然后在根目录创建 `.stylelintrc.js` 文件：
+
+```js
+module.exports = {
+  extends: 'stylelint-config-standard',
+}
+```
+
+如果使用 `prettier` ，还需要安装并配置 `stylelint-config-prettier` 来关闭一些可能会与 `prettier` 冲突的规则：
+
+```sh
+npm install --save-dev stylelint-config-prettier
+```
+
+```js
+module.exports = {
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+}
+```
+
+> 使用 SCSS 时，需要将上面的标准配置 `stylelint-config-standard` 替换成 `stylelint-config-standard-scss` ，然后将 `stylelint-config-prettier` 替换成 `stylelint-config-prettier-scss`。
+
+> vscode 的 `stylelint` 插件默认不对 scss 文件做检查，需要在配置中 `stylelint.validate` 中加上 `scss`。
