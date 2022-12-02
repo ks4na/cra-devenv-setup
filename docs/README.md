@@ -18,6 +18,8 @@
   - [在页面中修改 head 中标签的信息](#在页面中修改-head-中标签的信息)
 - [7.添加.gitattributes](#7添加gitattributes)
 - [8.启用 corepack 管理包管理器](#8启用-corepack-管理包管理器)
+- [9.配置 linters](#9配置-linters)
+  - [配置 eslint](#配置-eslint)
 
 ## 1.typescript 别名支持
 
@@ -242,3 +244,59 @@ render() {
 ## 8.启用 corepack 管理包管理器
 
 见笔记 [corepack 管理包管理器](https://gitbook.yumecoder.top/above-coding/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3/corepack%E7%AE%A1%E7%90%86%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html)
+
+## 9.配置 linters
+
+### 配置 eslint
+
+CRA 已经默认配置了 `eslint`，见 [官网文档](https://create-react-app.dev/docs/setting-up-your-editor/#extending-or-replacing-the-default-eslint-config)。  
+如果需要自定义添加规则或者拓展配置，可以在 `package.json` 中 `eslintConfig` 字段设置。
+
+另外也可以自己自定义配置 `eslint`。官方强烈建议拓展官方的基础配置，即继承 `package.json` 中 `eslintConfig` 配置。
+
+**自定义配置 eslint**
+
+> CRA 已经默认安装了 `eslint`，无需手动安装。
+
+首先在根目录创建配置文件 `.eslintrc.js` ，将 `package.json` 中的 `eslintConfig` 配置复制过来：
+
+```js
+module.exports = {
+  extends: ['react-app', 'react-app/jest'],
+}
+```
+
+然后就可以直接参照 eslint 官方文档在 `.eslintrc.js` 配置文件中进行配置了。例如添加一些规则：
+
+```js
+module.exports = {
+  extends: ['react-app', 'react-app/jest'],
+  rules: {
+    'no-alert': 'warn',
+  },
+  overrides: [
+    {
+      files: ['**/*.ts?(x)'], // rules only targets typescript files
+      rules: {
+        'no-alert': 'error',
+      },
+    },
+  ],
+}
+```
+
+如果使用 `prettier`， 还需要拓展 `eslint-config-prettier` 来关闭一些可能与 `prettier` 冲突的规则。  
+首先安装 `eslint-config-prettier`：
+
+```sh
+npm install --save-dev eslint-config-prettier
+```
+
+然后在 `.eslintrc.js` 中 `extends` 数组的最后加上 `prettier` （必须放在最后一项）：
+
+```js
+module.exports = {
+  extends: ['react-app', 'react-app/jest', 'prettier'],
+  // ...
+}
+```
