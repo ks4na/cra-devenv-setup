@@ -18,6 +18,7 @@
   - [在页面中修改 head 中标签的信息](#在页面中修改-head-中标签的信息)
 - [7.添加.gitattributes](#7添加gitattributes)
 - [8.启用 corepack 管理包管理器](#8启用-corepack-管理包管理器)
+- [9.配置 .nvmrc 指定 node 版本](#9配置-nvmrc-指定-node-版本)
 - [9.配置 linters](#9配置-linters)
   - [配置 eslint](#配置-eslint)
   - [配置 stylelint](#配置-stylelint)
@@ -246,6 +247,23 @@ render() {
 ## 8.启用 corepack 管理包管理器
 
 见笔记 [corepack 管理包管理器](https://gitbook.yumecoder.top/above-coding/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3/corepack%E7%AE%A1%E7%90%86%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html)
+
+## 9.配置 .nvmrc 指定 node 版本
+
+> 1. 前提是使用 `nvm` 来管理 `node` 版本。
+> 2. 这个方式并不能强制团队使用同一个 node 版本，最好还是使用 `devcontainer` 的方式来保证项目开发环境的一致性。
+
+根目录添加 `.nvmrc` 文件，其中包含 `node` 的版本，可以指导团队合作时使用相同版本的 `node`。  
+使用 `nvm` 的 `nvm use`、`nvm install`、`nvm which` 等命令时会使用该文件指定的 `node` 版本。
+
+示例：
+
+```sh
+# 将当前使用的 node 版本加入 .nvmrc 文件
+node -v > .nvmrc
+```
+
+之后拉取项目后，直接使用 `nvm install` 命令即可安装 `.nvmrc` 中指定版本的 `node`。
 
 ## 9.配置 linters
 

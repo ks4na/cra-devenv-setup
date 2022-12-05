@@ -26,6 +26,8 @@
     - 见分支 `f-enable_corepack-启用corepack`
   - [x] 添加 .gitattributes
     - 见分支 `f-add_gitattributes-添加gitattributes`
+  - [x] 使用 .nvmrc 指定 node 版本
+    - 见分支 `f-add_nvmrc_file-添加nvmrc文件`
   - [ ] devcontainer 配置
 - [ ] 版本发布
   - [ ] standard-version / semantic-release
