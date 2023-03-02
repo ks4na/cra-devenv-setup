@@ -132,6 +132,8 @@ export default App
 
 > `PUBLIC_URL` 用于指定打包后的产物放置的目录位置，放在二级路由或者 CDN 上时需要指定该属性。另外需要在 `BrowserRouter` 组件中指定 `basename: process.env.PUBLIC_URL`，`Link` 等路由组件的链接路径才是正确的。
 
+> `PUBLIC_URL` 可以参照[官网文档-进阶配置](https://create-react-app.dev/docs/advanced-configuration)在 `.env` 等环境变量配置文件中指定 `PUBLIC_URL`。（该页面文档中 `PUBLIC_URL` 的使用说明中还包含了 `package.json -> homepage` 字段与 `PUBLIC_URL` 环境变量的区别）
+
 ### html 中引用 public 目录下的资源
 
 在 html 中引用环境变量使用 `%ENV_VARIABLES%` 的方式。  
