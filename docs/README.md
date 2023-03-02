@@ -146,9 +146,11 @@ export default App
 
 如果把文件放到根目录的 `public` 目录下，这些内容将会被直接复制到打包后的 `build` 目录中。想要引用放在 `public` 目录中的资源，需要使用 `PUBLIC_URL` 这个环境变量。
 
-> `PUBLIC_URL` 用于指定打包后的产物放置的目录位置，放在二级路由或者 CDN 上时需要指定该属性。另外需要在 `BrowserRouter` 组件中指定 `basename: process.env.PUBLIC_URL`，`Link` 等路由组件的链接路径才是正确的。
+> `PUBLIC_URL` 用于指定打包后的产物放置的目录位置，放在二级路由或者 CDN 上时需要指定该属性。可以参照[官网文档-进阶配置](https://create-react-app.dev/docs/advanced-configuration)在 `.env` 等环境变量配置文件中指定 `PUBLIC_URL`。（该文档中 `PUBLIC_URL` 的使用说明中还包含了 `package.json -> homepage` 字段与 `PUBLIC_URL` 环境变量的区别）
 
-> `PUBLIC_URL` 可以参照[官网文档-进阶配置](https://create-react-app.dev/docs/advanced-configuration)在 `.env` 等环境变量配置文件中指定 `PUBLIC_URL`。（该页面文档中 `PUBLIC_URL` 的使用说明中还包含了 `package.json -> homepage` 字段与 `PUBLIC_URL` 环境变量的区别）
+> 注意： 通常情况下，项目部署在服务器二级路径下时，`process.env.PUBLIC_URL` 会指定为类似 `/a/b/c` 这样的二级路径，此时 `BrowserRouter` 的 `basename` 与 `PUBLIC_URL` 是同样的，所以可以指定 `basename: process.env.PUBLIC_URL` 。但是如果 `PUBLIC_URL` 指定的是类似 `http://example.com/a/b/c` 这样的带 hostname 的路径时， `BrowserRouter` 的 `basename` 不能直接指定为 `process.env.PUBLIC_URL`。
+
+> 本质上 `BrowserRouter` 的 `basename` 与 `PUBLIC_URL` 是无关的，`basename` 指定的是路由前缀，而 `PUBLIC_URL` 决定静态资源的位置。可以将静态资源放在 CDN 上用 `https://...` 的方式引用，将自己的二级域名转发到 CDN 上的 `index.html`，这种情况 `basename` 与 `PUBLIC_URL` 就是不一样的。只是通常情况下，项目部署在服务器上二级目录且不使用 CDN，此时 `BrowserRouter` 的 `basename` 与 `PUBLIC_URL` 是同样的。
 
 ### html 中引用 public 目录下的资源
 
@@ -161,7 +163,7 @@ export default App
 
 ### css 等样式文件中引用 public 目录下的资源
 
-在 css/scss 等样式文件中只需要使用相对路径（如：`../public/1.png`）的方式进行引用即可，webpack 打包时会自动打包为带有 hash 的文件名。
+在 css/scss 等样式文件中只需要使用相对路径（如：`../public/1.png`）的方式进行引用即可，webpack 打包时会自动补充 `PUBLIC_URL` 且打包为带有 hash 的文件名。
 
 ```css
 .Logo {
@@ -173,13 +175,15 @@ export default App
 
 在 js 代码中需要使用 `process.env.PUBLIC_URL` 变量来引用 public 目录下的资源：
 
+> CRA 不允许使用 `import` 方式引入 `src` 目录外的图片。另外如果使用 `import` 方式引入图片，将会打包出带有 hash 的文件名。
+
 ```tsx
 render() {
   return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />
 }
 ```
 
-`BrowserRouter` 设置 basename：
+`BrowserRouter` 设置 basename (通常情况下是与 `PUBLIC_URL` 一致的，参见 “5. 引用 public 目录下的资源” 章节)：
 
 ```tsx
 <BrowserRouter basename={process.env.PUBLIC_URL} />
